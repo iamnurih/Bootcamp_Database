@@ -1,43 +1,25 @@
--- CREATE DATABASE day3taskdatabase
-USE day3taskdatabase; 
+-- CREATE DATABASE practiceschema
 
--- CREATE TABLE employees(
---     employee_id INT AUTO_INCREMENT PRIMARY KEY,
---     employee_name VARCHAR(100),
---     position VARCHAR(100),
---     salary DECIMAL(10,2)
+USE practiceschema;
+
+-- CREATE TABLE user(
+-- id int auto_increment primary key,
+-- password varchar(4),
+-- name varchar(3), 
+-- gender enum('male', 'female'),
+-- email varchar(15),
+-- birthday char(6),
+-- age TINYINT, 
+-- company enum('samsung', 'lg', 'hyundai')
 -- );
 
--- INSERT INTO employees (employee_name, position, salary) VALUES
--- 	('혜린', 'PM', 9000),
---     ('은우', 'Frontend', 92000),
---     ('가을', 'Backend', 92000),
---     ('지수', 'Frontend', 7800),
---     ('민혁', 'Frontend', 96000), 
---     ('하온', 'Backend', 130000);
 
--- UPDATE employees
--- SET salary = 8000
--- WHERE employee_id = 2;
-
--- SELECT employee_name, salary FROM employees 
--- WHERE salary <= 9000 
-
--- UPDATE employees 
--- set salary = salary * 1.10 
--- WHERE position = 'PM'
-
--- UPDATE employees 
--- set salary = salary *1.05 
--- where position = 'Backend'
-
--- DELETE from employees where employee_name = '민혁'
-
--- SELECT position, round(avg(salary), 0) as avg_salary
--- from employees 
--- group by position; 
-
-delete from employees;
-
-
-
+create table boards(
+id int primary key auto_increment,
+title varchar(5),
+content varchar(10),
+likes INT CHECK (likes between 1 and 100),
+img char(1) default 'c',
+user_id int, 
+foreign key(user_id) references user(id)
+);
